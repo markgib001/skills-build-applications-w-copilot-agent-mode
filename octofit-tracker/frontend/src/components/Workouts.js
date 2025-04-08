@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Workouts = () => {
+function Workouts() {
   const [workouts, setWorkouts] = useState([]);
 
   useEffect(() => {
@@ -11,29 +11,26 @@ const Workouts = () => {
   }, []);
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <h1 className="card-title">Workouts</h1>
-        <button type="button" className="btn btn-primary mb-3">Add Workout</button>
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
+    <div className="container mt-4">
+      <h1 className="mb-4">Workouts</h1>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {workouts.map(workout => (
+            <tr key={workout.id}>
+              <td>{workout.id}</td>
+              <td>{workout.name}</td>
             </tr>
-          </thead>
-          <tbody>
-            {workouts.map(workout => (
-              <tr key={workout.id}>
-                <td>{workout.id}</td>
-                <td>{workout.name}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
-};
+}
 
 export default Workouts;

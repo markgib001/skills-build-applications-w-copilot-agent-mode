@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Activities = () => {
+function Activities() {
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
@@ -11,32 +11,26 @@ const Activities = () => {
   }, []);
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <h1 className="card-title">Activities</h1>
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Details</th>
+    <div className="container mt-4">
+      <h1 className="mb-4">Activities</h1>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {activities.map(activity => (
+            <tr key={activity.id}>
+              <td>{activity.id}</td>
+              <td>{activity.name}</td>
             </tr>
-          </thead>
-          <tbody>
-            {activities.map(activity => (
-              <tr key={activity.id}>
-                <td>{activity.id}</td>
-                <td>{activity.name}</td>
-                <td>
-                  <a href="#" className="btn btn-link">View Activity Details</a>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
-};
+}
 
 export default Activities;

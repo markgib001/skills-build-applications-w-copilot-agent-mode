@@ -1,89 +1,91 @@
-/* Updated styles for Octofit Tracker */
+/* General styles */
 body {
   background-color: #f0f8ff; /* Light blue background */
-  color: #333; /* Dark text color */
+  color: #333; /* Dark text color for readability */
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 50px;
-  pointer-events: none;
-  margin-right: 20px;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #4caf50; /* Green background for header */
-  color: white; /* White text */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  font-size: calc(10px + 2vmin);
-}
-
+/* Navigation menu styles */
 .navbar {
-  background-color: #007bff; /* Blue navigation menu */
+  background-color: #007bff; /* Blue background */
+  color: white;
 }
 
-.navbar a {
-  color: white; /* White links */
+.navbar-brand {
+  color: white;
+  font-weight: bold;
 }
 
-.navbar a:hover {
-  color: #ffcc00; /* Yellow on hover */
+.navbar-nav .nav-link {
+  color: white;
 }
 
-.table {
-  background-color: #ffffff; /* White table background */
-  border: 1px solid #ddd; /* Light border */
+.navbar-nav .nav-link:hover {
+  color: #ffdd57; /* Yellow on hover */
 }
 
-.table th {
-  background-color: #007bff; /* Blue table header */
-  color: white; /* White text */
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f2f2f2; /* Light gray for striped rows */
-}
-
-.btn {
-  background-color: #007bff; /* Blue buttons */
-  color: white; /* White text */
-  border: none;
-}
-
-.btn:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-}
-
+/* Heading styles */
 h1, h2, h3, h4, h5, h6 {
-  color: #4caf50; /* Green headings */
+  color: #007bff; /* Blue headings */
 }
 
-.App-link {
-  color: #ff5722; /* Orange links */
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
 }
 
-.App-link:hover {
-  color: #e64a19; /* Darker orange on hover */
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+table th {
+  background-color: #007bff;
+  color: white;
 }
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+/* Button styles */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Link styles */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Logo styles */
+.logo {
+  height: 50px;
+  margin-right: 10px;
+}
+
+/* Favicon styles */
+/* Favicon is added via the public/manifest.json and public/favicon.ico */
