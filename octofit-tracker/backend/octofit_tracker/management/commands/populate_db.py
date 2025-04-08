@@ -22,29 +22,28 @@ class Command(BaseCommand):
 
         # Create users
         users = [
-            User(_id=ObjectId(), username='thundergod', email='thundergod@mhigh.edu', password='thundergodpassword'),
-            User(_id=ObjectId(), username='metalgeek', email='metalgeek@mhigh.edu', password='metalgeekpassword'),
-            User(_id=ObjectId(), username='zerocool', email='zerocool@mhigh.edu', password='zerocoolpassword'),
-            User(_id=ObjectId(), username='crashoverride', email='crashoverride@mhigh.edu', password='crashoverridepassword'),
-            User(_id=ObjectId(), username='sleeptoken', email='sleeptoken@mhigh.edu', password='sleeptokenpassword'),
+            User(_id=ObjectId(), email='thundergod@mhigh.edu', name='Thunder God', age=25),
+            User(_id=ObjectId(), email='metalgeek@mhigh.edu', name='Metal Geek', age=22),
+            User(_id=ObjectId(), email='zerocool@mhigh.edu', name='Zero Cool', age=20),
+            User(_id=ObjectId(), email='crashoverride@mhigh.edu', name='Crash Override', age=23),
+            User(_id=ObjectId(), email='sleeptoken@mhigh.edu', name='Sleep Token', age=21),
         ]
         User.objects.bulk_create(users)
 
         # Create teams
-        team1 = Team(name='Blue Team')
-        team2 = Team(name='Gold Team')
-        team1.members = users[:3]  # Assign the first three users to Blue Team
-        team2.members = users[3:]  # Assign the remaining users to Gold Team
-        team1.save()
-        team2.save()
+        teams = [
+            Team(_id=ObjectId(), name='Blue Team'),
+            Team(_id=ObjectId(), name='Gold Team'),
+        ]
+        Team.objects.bulk_create(teams)
 
         # Create activities
         activities = [
-            Activity(_id=ObjectId(), user=users[0], activity_type='Cycling', duration=timedelta(hours=1)),
-            Activity(_id=ObjectId(), user=users[1], activity_type='Crossfit', duration=timedelta(hours=2)),
-            Activity(_id=ObjectId(), user=users[2], activity_type='Running', duration=timedelta(hours=1, minutes=30)),
-            Activity(_id=ObjectId(), user=users[3], activity_type='Strength', duration=timedelta(minutes=30)),
-            Activity(_id=ObjectId(), user=users[4], activity_type='Swimming', duration=timedelta(hours=1, minutes=15)),
+            Activity(_id=ObjectId(), user=users[0], activity_type='Cycling', duration=int(timedelta(hours=1).total_seconds())),
+            Activity(_id=ObjectId(), user=users[1], activity_type='Crossfit', duration=int(timedelta(hours=2).total_seconds())),
+            Activity(_id=ObjectId(), user=users[2], activity_type='Running', duration=int(timedelta(hours=1, minutes=30).total_seconds())),
+            Activity(_id=ObjectId(), user=users[3], activity_type='Strength', duration=int(timedelta(minutes=30).total_seconds())),
+            Activity(_id=ObjectId(), user=users[4], activity_type='Swimming', duration=int(timedelta(hours=1, minutes=15).total_seconds())),
         ]
         Activity.objects.bulk_create(activities)
 
