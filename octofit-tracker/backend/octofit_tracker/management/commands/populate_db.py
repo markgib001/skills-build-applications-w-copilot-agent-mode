@@ -6,44 +6,42 @@ from datetime import timedelta
 from bson import ObjectId
 
 class Command(BaseCommand):
-    help = 'Populate the database with test data for users, teams, activities, leaderboard, and workouts'
+    help = 'Populate the database with test data for users, teams, activity, leaderboard, and workouts'
 
     def handle(self, *args, **kwargs):
         # Connect to MongoDB
-        client = MongoClient(settings.DATABASES['default']['CLIENT']['host'], settings.DATABASES['default']['CLIENT']['port'])
+        client = MongoClient(settings.DATABASES['default']['HOST'], settings.DATABASES['default']['PORT'])
         db = client[settings.DATABASES['default']['NAME']]
 
         # Drop existing collections
         db.users.drop()
         db.teams.drop()
-        db.activities.drop()
+        db.activity.drop()
         db.leaderboard.drop()
         db.workouts.drop()
 
         # Create users
         users = [
-            User(_id=ObjectId(), email='thundergod@mhigh.edu', name='Thunder God', age=25),
-            User(_id=ObjectId(), email='metalgeek@mhigh.edu', name='Metal Geek', age=22),
-            User(_id=ObjectId(), email='zerocool@mhigh.edu', name='Zero Cool', age=20),
-            User(_id=ObjectId(), email='crashoverride@mhigh.edu', name='Crash Override', age=23),
-            User(_id=ObjectId(), email='sleeptoken@mhigh.edu', name='Sleep Token', age=21),
+            User(_id=ObjectId(), username='thundergod', email='thundergod@mhigh.edu', password='thundergodpassword'),
+            User(_id=ObjectId(), username='metalgeek', email='metalgeek@mhigh.edu', password='metalgeekpassword'),
+            User(_id=ObjectId(), username='zerocool', email='zerocool@mhigh.edu', password='zerocoolpassword'),
+            User(_id=ObjectId(), username='crashoverride', email='crashoverride@hmhigh.edu', password='crashoverridepassword'),
+            User(_id=ObjectId(), username='sleeptoken', email='sleeptoken@mhigh.edu', password='sleeptokenpassword'),
         ]
         User.objects.bulk_create(users)
 
         # Create teams
-        teams = [
-            Team(_id=ObjectId(), name='Blue Team'),
-            Team(_id=ObjectId(), name='Gold Team'),
-        ]
-        Team.objects.bulk_create(teams)
+        team = Team(_id=ObjectId(), name='Blue Team')
+        team.save()
+        team.members.add(*users)
 
         # Create activities
         activities = [
-            Activity(_id=ObjectId(), user=users[0], activity_type='Cycling', duration=int(timedelta(hours=1).total_seconds())),
-            Activity(_id=ObjectId(), user=users[1], activity_type='Crossfit', duration=int(timedelta(hours=2).total_seconds())),
-            Activity(_id=ObjectId(), user=users[2], activity_type='Running', duration=int(timedelta(hours=1, minutes=30).total_seconds())),
-            Activity(_id=ObjectId(), user=users[3], activity_type='Strength', duration=int(timedelta(minutes=30).total_seconds())),
-            Activity(_id=ObjectId(), user=users[4], activity_type='Swimming', duration=int(timedelta(hours=1, minutes=15).total_seconds())),
+            Activity(_id=ObjectId(), user=users[0], activity_type='Cycling', duration=timedelta(hours=1)),
+            Activity(_id=ObjectId(), user=users[1], activity_type='Crossfit', duration=timedelta(hours=2)),
+            Activity(_id=ObjectId(), user=users[2], activity_type='Running', duration=timedelta(hours=1, minutes=30)),
+            Activity(_id=ObjectId(), user=users[3], activity_type='Strength', duration=timedelta(minutes=30)),
+            Activity(_id=ObjectId(), user=users[4], activity_type='Swimming', duration=timedelta(hours=1, minutes=15)),
         ]
         Activity.objects.bulk_create(activities)
 
