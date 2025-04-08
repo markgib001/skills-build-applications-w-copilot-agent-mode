@@ -1,0 +1,89 @@
+/* Updated styles for Octofit Tracker */
+body {
+  background-color: #f0f8ff; /* Light blue background */
+  color: #333; /* Dark text color */
+  font-family: Arial, sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 50px;
+  pointer-events: none;
+  margin-right: 20px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #4caf50; /* Green background for header */
+  color: white; /* White text */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-size: calc(10px + 2vmin);
+}
+
+.navbar {
+  background-color: #007bff; /* Blue navigation menu */
+}
+
+.navbar a {
+  color: white; /* White links */
+}
+
+.navbar a:hover {
+  color: #ffcc00; /* Yellow on hover */
+}
+
+.table {
+  background-color: #ffffff; /* White table background */
+  border: 1px solid #ddd; /* Light border */
+}
+
+.table th {
+  background-color: #007bff; /* Blue table header */
+  color: white; /* White text */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f2f2f2; /* Light gray for striped rows */
+}
+
+.btn {
+  background-color: #007bff; /* Blue buttons */
+  color: white; /* White text */
+  border: none;
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #4caf50; /* Green headings */
+}
+
+.App-link {
+  color: #ff5722; /* Orange links */
+}
+
+.App-link:hover {
+  color: #e64a19; /* Darker orange on hover */
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
