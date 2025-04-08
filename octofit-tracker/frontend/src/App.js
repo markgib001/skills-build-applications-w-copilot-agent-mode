@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import logo from './logo.svg'; // Assuming the logo is in the src folder
 
-// Updated navigation menu to include the logo
+// Updated navigation menu to include all components
 function App() {
   return (
     <Router>

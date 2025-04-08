@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState([]);
@@ -7,12 +6,13 @@ function Leaderboard() {
   useEffect(() => {
     fetch('https://refactored-xylophone-pgjpwwjw4rf9r7w-8000.app.github.dev/api/leaderboard')
       .then(response => response.json())
-      .then(data => setLeaderboard(data));
+      .then(data => setLeaderboard(data))
+      .catch(error => console.error('Error fetching leaderboard:', error));
   }, []);
 
   return (
     <div className="container mt-4">
-      <h1 className="mb-4">Leaderboard</h1>
+      <h1 className="text-primary mb-4">Leaderboard</h1>
       <table className="table table-striped">
         <thead>
           <tr>
